@@ -1,0 +1,17 @@
+<html ng-app>
+<head>
+	<title>Angular binding</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">	
+		function Ctrl($scope) {
+		  $scope.userAlias = 'Welcome!';
+		}
+	</script>
+</head>
+<body>
+	<div ng-controller="Ctrl">
+		<input ng-model="userAlias">
+		<label ng-bind="userAlias"></label>
+	</div>
+</body>
+</html>
