@@ -1,0 +1,21 @@
+<html ng-app>
+	<header>
+		<script src="angular.js"></script>
+		<script>
+			function toDoList($scope) {
+				$scope.items = [
+					{name: 'Mouse', id: '1', description: 'Handle the pointer'},
+					{name: 'Keyboard', id: '2', description: 'Helps to type commands'}
+				];
+			}	
+		</script>
+	</header>
+	<body>
+		<div ng-controller="toDoList">
+			<input type="text" ng-model="item_name">
+			<ul>
+				<li ng-repeat="item in items | filter:item_name"> {{item.name}} </li>
+			</ul>
+		</div>
+	</body>
+</html>
