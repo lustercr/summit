@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>jQuery keyup</title>
+	<script type="text/javascript" src="jquery.js"></script>
+</head>
+
+<body>
+	<input type="text" id="user-alias">
+	<label id="clone-label"></label>
+
+	<script type="text/javascript">
+		var userAlias = $('#user-alias'),
+			label = $('#clone-label');
+		userAlias.bind('keyup', function(event) {
+			label.text($(this).val());
+		});
+	</script>
+</body>
+</html>
