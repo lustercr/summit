@@ -1,0 +1,20 @@
+ <!--añadimos aquí el controlador notasController-->
+<div ng-controller="notasController">
+    <h3>Agenda</h3>
+    Búsqueda: <input ng-model="datoBuscado"/>
+    <ul>
+        <li ng-repeat="nota in notas | filter:datoBuscado">
+            <p>
+            	<button ng-click="remover($index)"/>Remover</button>            	
+            	Id: {{ nota.id }} Nombre: {{ nota.nombre }} Edad: {{ nota.edad }}
+            </p>
+        </li>
+    </ul>
+    <hr>
+    <form action="">
+    	Id: <input ng-model="nuevoContacto.id"/>
+    	Nombre: <input ng-model="nuevoContacto.nombre"/>
+    	Edad: <input ng-model="nuevoContacto.edad"/>
+    	<button ng-click="agregar()">Agregar</button>
+   	</form>
+</div>
