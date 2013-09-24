@@ -1,0 +1,36 @@
+<html ng-app="summitApp">
+	<head>
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript" src="firebase.js"></script>
+		<script type="text/javascript" src="angularFire.js"></script>
+		<script type="text/javascript">
+			angular.module('summitApp', ['firebase']).
+				constant('FireBase_URL', 'https://angular-summit-app.firebaseio.com/').
+				controller('programmingLanguagesCtr', [ '$scope', 'angularFire', 'FireBase_URL', function($scope, angularFire, FireBaseUrl) {
+						// create he firebase reference
+						var ref = new Firebase(FireBaseUrl);
+						$scope.languages = [];
+
+						// bind the model 
+						angularFire(ref, $scope, "languages");
+
+						$scope.AddLanguage = function() {
+							$scope.languages.push($scope.language);
+						};
+					}
+				]);
+
+		</script>
+	</head>
+	<body>
+		<div ng-controller="programmingLanguagesCtr">
+			<input ng-model="language">
+			<button ng-click="AddLanguage()">Add</button>
+			<ul>
+				<li ng-repeat="language in languages">{{language}}</li>
+			</ul>
+		</div>
+	
+	</body>
+|</html>	
