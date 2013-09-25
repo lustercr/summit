@@ -6,23 +6,23 @@ Agenda.service("notasModel", function(){
         return [
             {
                 nombre : "Israel Salas",
-                edad : "32 años"
+                telefono : "8890977"
             },
             {
                 nombre : "Andrés López",
-                edad : "24 años"
+                telefono : "887987"
             },
             {
                 nombre : "Juan Rodríguez",
-                edad : "28 años"
+                telefono : "8787687"
             },
             {
                 nombre : "Pepito",
-                edad : "18 años"
+                telefono : "9868757"
             },
             {
                 nombre : "Manuel",
-                edad : "45 años"
+                telefono : "96675765
             }
         ]
     }
