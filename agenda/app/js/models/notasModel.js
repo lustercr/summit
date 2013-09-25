@@ -22,7 +22,7 @@ Agenda.service("notasModel", function(){
             },
             {
                 nombre : "Manuel",
-                telefono : "96675765
+                telefono : "96675765"
             }
         ]
     }
