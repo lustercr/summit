@@ -1,23 +1,52 @@
 <div ng-include src="'views/header.html'"></div>
 <!--añadimos aquí el controlador notasController-->
 <div ng-controller="notasController">
-    <h3>Agenda</h3>
-    <div class="row-floud">
-        Búsqueda: <input name="filter" type="search" class="search" ng-model="datoBuscado" >    
+    
+    <div class="row-fluid">
+        <div class="span6">
+            <legend>Agenda</legend>
+            <div class="span12">
+                Búsqueda: <input name="filter" type="text" class="input-medium search-query" ng-model="datoBuscado" >    
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="contacto in notas | filter:datoBuscado">
+                        <td>{{ contacto.nombre }}</td>
+                        <td>{{ contacto.telefono }}</td>
+                        <td><button ng-click="remover($index)" class="btn btn-small btn-danger"/>Remover</button>  </td>
+                    </tr>
+                </tbody>
+            </table>        
+        </div>
+        <div class="span6">
+            <form name="form" class="form-horizontal" novalidate>
+                <legend>Agregar contacto</legend>
+                <div class="control-group">
+                    <label class="control-label" for="contact_name">Nombre</label>
+                    <div class="controls">
+                        <input type="text" id="contact_name" ng-model="nuevoContacto.nombre" placeholder="Nombre*" required>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="contact_phone">Teléfono</label>
+                    <div class="controls">
+                        <input type="text" id="contact_phone" ng-model="nuevoContacto.telefono" placeholder="Teléfono*" required ng-minlength="8">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button ng-click="agregar()" ng-disabled="form.$invalid" class="btn">Agregar</button>
+                    </div>
+                </div>
+            </form>    
+        </div>
     </div>
     
-    <ul>
-        <li ng-repeat="nota in notas | filter:datoBuscado">
-            <p>
-            	<button ng-click="remover($index)" class="btn btn-small btn-danger"/>Remover</button>            	
-            	Nombre: {{ nota.nombre }} Teléfono: {{ nota.telefono }}
-            </p>
-        </li>
-    </ul>
-    <hr>
-    <form action="">
-    	Nombre: <input ng-model="nuevoContacto.nombre"/>
-    	Teléfono: <input ng-model="nuevoContacto.telefono"/>
-    	<button ng-click="agregar()" class="btn btn-primary">Agregar</button>
-   	</form>
 </div>

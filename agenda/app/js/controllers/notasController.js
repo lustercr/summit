@@ -8,7 +8,7 @@ Agenda.controller("notasController", function($scope, notasModel){
 	    $scope.nuevoContacto = {
 	    	id: '',
 	   		nombre: '',
-	   		edad: ''
+	   		telefono: ''
 	    }    	
     }
 
