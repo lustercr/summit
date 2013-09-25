@@ -6,15 +6,14 @@
         <li ng-repeat="nota in notas | filter:datoBuscado">
             <p>
             	<button ng-click="remover($index)"/>Remover</button>            	
-            	Id: {{ nota.id }} Nombre: {{ nota.nombre }} Edad: {{ nota.edad }}
+            	Nombre: {{ nota.nombre }} Teléfono: {{ nota.telefono }}
             </p>
         </li>
     </ul>
     <hr>
     <form action="">
-    	Id: <input ng-model="nuevoContacto.id"/>
     	Nombre: <input ng-model="nuevoContacto.nombre"/>
-    	Edad: <input ng-model="nuevoContacto.edad"/>
+    	Teléfono: <input ng-model="nuevoContacto.telefono"/>
     	<button ng-click="agregar()">Agregar</button>
    	</form>
 </div>
