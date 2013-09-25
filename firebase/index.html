@@ -1,6 +1,18 @@
+<!doctype html>
 <html ng-app="summitApp">
 	<head>
 		<title></title>
+		<link href="bootstrap.css" rel="stylesheet" type="text/css"/>
+		<style>
+			body{width: 80%; margin:auto;}
+			div.programing-controller {
+				width: 350px;
+				margin: 40px auto;
+			}
+			div.programing-controller form input {
+				margin-top: 8px;
+			}
+		</style>
 		<script type="text/javascript" src="angular.js"></script>
 		<script type="text/javascript" src="firebase.js"></script>
 		<script type="text/javascript" src="angularFire.js"></script>
@@ -16,7 +28,14 @@
 						angularFire(ref, $scope, "languages");
 
 						$scope.AddLanguage = function() {
-							$scope.languages.push($scope.language);
+							var language = $scope.language.toLowerCase(),
+								found    = $scope.languages.indexOf(language);
+							
+							// simple validacion si el language existe en el arreglo
+							if(found == -1) {
+								$scope.languages.push(language);
+								$scope.language = '';
+							}	
 						};
 					}
 				]);
@@ -24,13 +43,15 @@
 		</script>
 	</head>
 	<body>
-		<div ng-controller="programmingLanguagesCtr">
-			<input ng-model="language">
-			<button ng-click="AddLanguage()">Add</button>
-			<ul>
+		<div ng-controller="programmingLanguagesCtr" class="row-fluid programing-controller">
+			<form action="" name="lang">
+				<input ng-model="language" type="text" required placeholder="lenguage o framework">
+				<button ng-click="AddLanguage()" class="btn btn-small btn-success" ng-disabled="lang.$invalid">Add</button>	
+			</form>
+			
+			<ul class="nav nav-pills nav-stacked">
 				<li ng-repeat="language in languages">{{language}}</li>
 			</ul>
 		</div>
-	
 	</body>
-|</html>	
+</html>	
